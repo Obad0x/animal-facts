@@ -4,7 +4,7 @@ require('dotenv').config()
 let factGenerator = require('./factsGenerator')
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
-bot.start('start', (ctx) => {
+bot.start( (ctx) => {
     let message = `Please use the /facts command to generate facts `;
 
     ctx.reply(message);
