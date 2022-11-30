@@ -1,11 +1,10 @@
-const { Telegraf } = require("telegraf")
+const { Telegraf } = require('telegraf')
+const { v4: uuidV4 } = require('uuid')
+require('dotenv').config()
+let factGenerator = require('./factsGenerator')
+const bot = new Telegraf(process.env.BOT_TOKEN)
 
-const uuid = require('uuid');
-require('dotenv').config();
-let factgenerator = require('./factsGenerator');
-const bot = new Telegraf(process.env.BOT_TOKEN);
-
-bot.start( (ctx) => {
+bot.start('start', (ctx) => {
     let message = `Please use the /facts command to generate facts `;
 
     ctx.reply(message);
@@ -15,14 +14,14 @@ bot.start( (ctx) => {
 bot.command('facts', async (ctx) => {
     try {
         ctx.reply('Generating facts..., Please wait...');
-        let imagePath = `./temp/${uuid()}.jpg`
-        await factgenerator.generateimage(imagePath)
+        let imagePath = `./temp/${uuidV4()}.jpg`
+        await factGenerator.generateImage(imagePath)
         await ctx.replyWithPhoto({source: imagePath})
         factgenerator.deleteImage(imagePath)
 
 }catch (err) {
         console.log(err)
-        ctx.reply("err sending image")
+        
     
     }
 
