@@ -22,7 +22,8 @@
     "jimp": "^0.16.2",
     "pexels": "^1.4.0",
     "telegraf": "^4.11.2",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "yarn": "^1.22.21"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
